@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>What the Field Taught Us: Reflecting on Risk Assessment in Practice</title>
+<link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&family=Poppins:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#eaf6ff;--surface:#fff;--ink:#12324d;--muted:#4a6a85;--em:#1f78b8;--em-dark:#14598c;--sky:#bfe6fb;--sky-soft:#e1f3ff;--line:#c6e3f5;--thc:#fff;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0c1e2e;--surface:#132c42;--ink:#e8f4ff;--muted:#a9c7de;--em:#6cc3f5;--em-dark:#9bd7fa;--sky:#24506f;--sky-soft:#1a3a54;--line:#26506b;--thc:#06233a}}
+:root[data-theme="dark"]{--bg:#0c1e2e;--surface:#132c42;--ink:#e8f4ff;--muted:#a9c7de;--em:#6cc3f5;--em-dark:#9bd7fa;--sky:#24506f;--sky-soft:#1a3a54;--line:#26506b;--thc:#06233a}
+html{scroll-padding-top:calc(16px + env(safe-area-inset-top,0px));scroll-behavior:smooth}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font:17px/1.85 Nunito,system-ui,sans-serif}
+.hero2{background:var(--surface);border-bottom:1px solid var(--line);padding:56px 20px 34px}
+.hero2-in{max-width:1040px;margin:0 auto}
+.pill{display:inline-block;background:var(--sky);color:var(--em-dark);padding:5px 16px;border-radius:99px;font:700 12px/1.6 Poppins,system-ui,sans-serif;letter-spacing:.1em;text-transform:uppercase}
+.hero2 h1{font:700 clamp(28px,5vw,46px)/1.2 Poppins,system-ui,sans-serif;color:var(--ink);margin:20px 0 18px;max-width:820px}
+.bar{width:96px;height:8px;border-radius:99px;background:var(--em);margin-bottom:22px}
+.facts{display:flex;flex-wrap:wrap;gap:10px 28px;font:600 14px Poppins,system-ui,sans-serif;color:var(--muted)}
+.facts b{color:var(--em-dark);font-weight:600}
+.layout{max-width:1040px;margin:32px auto;padding:0 20px;display:grid;grid-template-columns:230px 1fr;gap:32px;counter-reset:sec}
+.toc{position:sticky;top:calc(16px + env(safe-area-inset-top,0px));align-self:start;background:var(--surface);border:1px solid var(--line);border-radius:20px;padding:16px 12px}
+.toc p{margin:0 8px 8px;font:700 12px Poppins,system-ui,sans-serif;letter-spacing:.1em;text-transform:uppercase;color:var(--muted)}
+.toc a{display:block;padding:7px 10px;border-radius:10px;font:600 14px/1.4 Poppins,system-ui,sans-serif;color:var(--ink);text-decoration:none}
+.toc a:hover{background:var(--sky-soft);color:var(--em-dark)}
+.panel{background:var(--surface);border:1px solid var(--line);border-radius:24px;padding:26px 32px 14px;margin-bottom:18px;counter-increment:sec}
+h2{display:flex;align-items:center;gap:14px;font:600 23px/1.35 Poppins,system-ui,sans-serif;color:var(--em-dark);margin:0 0 14px}
+h2::before{content:counter(sec,decimal-leading-zero);flex:none;display:grid;place-items:center;width:44px;height:44px;border-radius:50%;background:var(--sky);color:var(--em-dark);font:700 14px Poppins,system-ui,sans-serif}
+p{margin:0 0 16px}
+.lead{font-size:19px;color:var(--muted)}
+.wrap{overflow-x:auto;margin:16px 0}
+table{border-collapse:collapse;width:100%;min-width:540px;font-size:15px;line-height:1.6}
+th{background:var(--em);color:var(--thc);text-align:left;font:600 14px Poppins,system-ui,sans-serif;padding:10px 12px}
+td{padding:10px 12px;border-bottom:1px solid var(--line);vertical-align:top}
+tr:nth-child(even) td{background:var(--sky-soft)}
+.refs p{font-size:15px;color:var(--muted);padding-left:28px;text-indent:-28px}
+footer{text-align:center;color:var(--muted);font:14px Poppins,system-ui,sans-serif;padding:10px 20px 40px}
+@media(max-width:820px){.layout{grid-template-columns:1fr;gap:18px}.toc{position:static;display:flex;gap:6px;overflow-x:auto;padding:12px}.toc p{display:none}.toc a{white-space:nowrap;background:var(--sky-soft)}.panel{padding:22px 20px 10px}}
+</style>
+</head>
+<body>
+<header class="hero2"><div class="hero2-in">
+<span class="pill">Information Security · Fieldwork Reflection</span>
+<h1>What the Field Taught Us: Reflecting on Information Security Risk Assessment in Practice</h1>
+<div class="bar"></div>
+<div class="facts"><span><b>Published</b> October 18, 2026</span><span><b>Reading time</b> 9 min</span><span><b>Topic</b> Risk assessment</span></div>
+</div></header>
+<div class="layout">
+<nav class="toc"><p>Contents</p><a href="#s1">Introduction</a><a href="#s2">From Textbook Concepts to Real Offices</a><a href="#s3">How We Reasoned Through the Risks</a><a href="#s4">What Our Scoring Method Taught Us</a><a href="#s5">Choosing and Applying Treatments</a><a href="#s6">The Human Side of Security</a><a href="#s7">Confidentiality and Professional Responsibility</a><a href="#s8">What We Would Do Differently</a><a href="#s9">Conclusion</a><a href="#s10">References</a></nav>
+<main>
+<section class="panel" id="s1">
+<h2>Introduction</h2>
+<p class="lead">A risk assessment looks tidy on paper. In the field, it is a series of conversations about how people actually protect information every day.</p>
+<p>Our group carried out an information security risk assessment for the engineering unit of a government public works organization. We interviewed stakeholders, identified assets, listed threats and vulnerabilities, rated risks, and proposed treatments. This post reflects on what that fieldwork taught us about information security in practice. In keeping with the confidentiality we owe the organization, I discuss our work in general terms: I do not name individuals, and I do not describe specific weaknesses. The lessons are about method, reasoning, and judgment, not about exposing anyone.</p>
+</section>
+<section class="panel" id="s2">
+<h2>From Textbook Concepts to Real Offices</h2>
+<p>In class, information security is organized around a few core ideas: protect the confidentiality, integrity, and availability of information; identify assets before you try to protect them; understand how threats exploit vulnerabilities; and choose responses in proportion to risk. The fieldwork showed that these ideas are less a checklist than a way of asking questions.</p>
+<p>The first surprise was how much of the real asset landscape is ordinary. The information that mattered most to the unit was not exotic: technical records, project files, accounts, devices, communications, backups, and printed documents. Their importance came from what the work depended on. A set of design files is not just data; it is months of planning that other offices and contractors rely on. Thinking this way helped us see that assets are valuable because of the function they support, which is exactly why NIST’s Cybersecurity Framework 2.0 treats understanding assets and their priority as a foundation of risk management (National Institute of Standards and Technology [NIST], 2024).</p>
+<p>The second surprise was how often security depended on people rather than technology. Many of the risks we recorded began with a habit, an assumption, or a missing procedure, not a missing product. That reinforced a point from our lessons: effective protection combines people, process, and technology, and weakness in one layer is rarely fully covered by another.</p>
+</section>
+<section class="panel" id="s3">
+<h2>How We Reasoned Through the Risks</h2>
+<p>We followed a simple sequence: interview stakeholders, identify assets, identify risks, analyze and evaluate them, and then decide on treatment. This matches the logic of NIST’s guide for conducting risk assessments, which describes risk as a function of the likelihood that a threat event occurs and the impact it would have, and which walks through preparing, conducting, communicating, and maintaining the assessment (Joint Task Force Transformation Initiative, 2012).</p>
+<p>For each asset, we asked the same questions. What could go wrong, and who or what could cause it? What weakness would make that event possible? What protections already exist? How likely is it, and how damaging would it be to confidentiality, integrity, or availability? Writing the existing controls beside each scenario turned out to be valuable, because it kept us honest. A risk is not judged in a vacuum; it is judged after considering what is already being done about it.</p>
+<p>In the end, we recorded ten risks across the unit’s information assets. Six were rated significant, two moderate, and two low. The distribution told us something: the highest concerns clustered around human behavior, credentials, malicious software, and data handling, while the areas with more established routines tended to rate lower.</p>
+</section>
+<section class="panel" id="s4">
+<h2>What Our Scoring Method Taught Us</h2>
+<p>We scored each risk by multiplying impact by probability, each on a scale of one to three, and then grouped the results into low, moderate, and significant bands.</p>
+<div class="wrap"><table>
+<tr><th>Element</th><th>Our approach</th><th>What we learned</th></tr>
+<tr><td>Scale</td><td>Impact 1–3 × probability 1–3</td><td>Simple and easy to explain to stakeholders, but coarse.</td></tr>
+<tr><td>Bands</td><td>1–3 low, 4–5 moderate, 6–9 significant</td><td>Useful for prioritizing, though products of two three-point scales can only be 1, 2, 3, 4, 6, or 9, so the number 5 never actually occurs.</td></tr>
+<tr><td>Treatment rule</td><td>Accept or monitor low, mitigate or accept moderate, mitigate significant</td><td>Links rating to action, but the boundaries still need judgment.</td></tr>
+</table></div>
+<p>The scoring exercise taught us two practical lessons. First, a simple method is valuable because stakeholders can understand it, but it hides nuance. A score of six can represent a likely event with moderate consequences or a rare event with severe ones, and those deserve different conversations. NIST’s guidance reminds assessors that risk results are only as meaningful as the assumptions and judgments behind them (Joint Task Force Transformation Initiative, 2012).</p>
+<p>Second, consistency is a discipline. When we reviewed our work, some ratings and recommended actions shifted between the initial analysis and the later review, and a few treatment labels did not match across our own tables. Nothing was hidden, but it showed us how easily documentation drifts when several people refine the same material. An assessment is only credible when its scores, definitions, and decisions line up from start to finish. We now see version control and a final reconciliation pass as part of the assessment itself, not as cosmetic work.</p>
+</section>
+<section class="panel" id="s5">
+<h2>Choosing and Applying Treatments</h2>
+<p>For risk treatment, our lessons describe four broad responses: mitigate, accept, transfer, or avoid. Given the nature of the unit’s work, we mostly recommended mitigation, since avoiding a risk would have meant stopping legitimate activities, and transferring it was rarely realistic for internal information. Acceptance was reserved for lower-rated risks where the likely consequences were small and existing practices were reasonable.</p>
+<p>We tried to choose treatments that matched the cause of each risk. Where the root issue was access, we favored role-based restrictions and periodic reviews. Where it was credentials, we pointed to stronger authentication and awareness. Where it was malicious software and phishing, we emphasized endpoint protection together with training. Where it was data loss, we focused on backups that are actually tested. Where it was human error in communication, we recommended simple verification habits. This reflects defense in depth: no single safeguard carries the entire burden, and technical, administrative, and physical controls support one another.</p>
+<p>The most important idea we took from the treatment stage is that a control is not finished when it is written down. A recommendation needs an owner, a timeline, and evidence that it works. NIST’s guidance on risk assessment stresses ongoing monitoring because risks change as people, systems, and threats change (Joint Task Force Transformation Initiative, 2012). Our recommendations are therefore a starting point for continuous improvement, not a final answer.</p>
+</section>
+<section class="panel" id="s6">
+<h2>The Human Side of Security</h2>
+<p>Perhaps the most lasting lesson was how willing people were to talk about their work, and how rarely they thought of themselves as part of the security system. Staff described routines in practical terms, such as how they share files, how they use devices, and how they keep records safe. Those descriptions revealed more about real risk than any policy document could. They also reminded us that security rules succeed only when they fit how people work. A control that is too inconvenient will be worked around, however well it is written.</p>
+<p>This is why we placed awareness and clear guidance beside technical measures in our recommendations. Training does not replace safeguards, but it improves the odds that people recognize a problem and report it early. It also builds a culture in which asking “is this safe?” feels normal, not burdensome.</p>
+</section>
+<section class="panel" id="s7">
+<h2>Confidentiality and Professional Responsibility</h2>
+<p>Doing this work also meant handling sensitive observations responsibly. We had to remember that the organization trusted us with a view of how it operates, and that a risk assessment is itself sensitive information. A document that maps weaknesses in detail can be as valuable to an attacker as it is to a defender. For that reason, we learned to share findings at the appropriate level: general themes for public reflection, and specific details only with the people authorized to act on them. The same discipline applies to how this blog is written. Confidentiality is not just a topic in our lessons; it was a duty we practiced during the fieldwork.</p>
+</section>
+<section class="panel" id="s8">
+<h2>What We Would Do Differently</h2>
+<p>If we repeated the assessment, we would improve in three ways. First, we would build a more complete asset inventory with named roles for ownership, because it is difficult to treat risks that no one is accountable for. Second, we would collect more evidence that existing controls operate effectively, such as review records and test results, instead of relying mostly on descriptions. Third, we would use a finer rating scale, or at least add a short note on the reasoning behind each score, so decision-makers can see why a risk was rated as it was. These changes would make the assessment more verifiable and easier to maintain over time.</p>
+</section>
+<section class="panel" id="s9">
+<h2>Conclusion</h2>
+<p>The fieldwork changed how we think about information security. It is not a product to install or a form to complete. It is an ongoing practice of knowing what matters, understanding how it could be harmed, choosing proportionate protections, and checking that they work. Our group’s ten identified risks, six of them significant, were less important as a list than as a demonstration of this reasoning in action.</p>
+<p>The most useful outcome was learning to ask better questions: what are we protecting, from whom, with what evidence, and who is responsible? An assessment that keeps asking those questions, and respects the confidentiality of the organization it serves, is the kind that can turn a snapshot of risk into lasting improvement.</p>
+</section>
+<section class="panel" id="s10">
+<h2>References</h2>
+<div class="refs">
+<p>Joint Task Force Transformation Initiative. (2012). <em>Guide for conducting risk assessments</em> (NIST Special Publication 800-30, Rev. 1). National Institute of Standards and Technology. https://doi.org/10.6028/NIST.SP.800-30r1</p>
+<p>National Institute of Standards and Technology. (2024). <em>The NIST cybersecurity framework (CSF) 2.0</em> (NIST CSWP 29). https://doi.org/10.6028/NIST.CSWP.29</p>
+</div>
+</section>
+</main>
+</div>
+<footer>Information Security Fieldwork Reflection</footer>
+</body>
+</html>
